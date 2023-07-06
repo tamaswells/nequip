@@ -870,7 +870,8 @@ class ASEDataset(AtomicInMemoryDataset):
     ):
         self.ase_args = {}
         self.ase_args.update(getattr(type(self), "ASE_ARGS", dict()))
-        self.ase_args.update(ase_args)
+        if ase_args:
+            self.ase_args.update(ase_args)
         assert "index" not in self.ase_args
         assert "filename" not in self.ase_args
 
